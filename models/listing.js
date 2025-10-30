@@ -1,0 +1,33 @@
+const mongoose =require("mongoose");
+const Schema  = mongoose.Schema;
+
+const listingSchema = new Schema({
+    title : {
+        type :String,
+        required :true
+    },
+    description : String,
+        image: {
+        url: {
+            type: String,
+            // Keep the default logic, but apply it to the 'url' sub-field
+            default: "https://images.unsplash.com/photo-1758644083602-15a9645a92a7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            // The setter is slightly more complex now as it needs to return the whole image object, 
+            // but the simplified fix below is usually sufficient for sample data. 
+        },
+        filename: String // Add a field for the filename
+    },
+
+    price: Number,
+    location : String,
+    country :String,
+    reviews : [
+        {
+            type : Schema.Types.ObjectId,
+            ref : "Review"
+        }
+    ]
+});
+
+const Listing = mongoose.model("Listing",listingSchema);
+module.exports = Listing;
