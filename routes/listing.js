@@ -4,6 +4,7 @@ const Listing = require("../models/listing.js");
 const wrapAysnc = require("../utils/wrapAsync.js");
 const ExpressError = require("../utils/ExpressError.js");
 const {listingSchema} =require("../schema.js");
+const {isLoggedIn}=require("../middleware.js");
 
 const validateListing = (req,res,next)=>{
     let {error}= listingSchema.validate(req.body);
@@ -21,13 +22,13 @@ router.get("/", wrapAysnc(async(req,res)=>{
     res.render("listings/index.ejs",{allListings});
 }));
 //new route
-router.get("/new",(req,res)=>{
+router.get("/new",isLoggedIn,(req,res)=>{
     res.render("listings/new.ejs");
 });
 //show route
 router.get("/:id",wrapAysnc(async (req,res)=>{
     let {id} =req.params;
-    const listing = await Listing.findById(id).populate("reviews");
+    const listing = await Listing.findById(id).populate("reviews").populate("owner");
     if(!listing){
         req.flash("error","Listing doesn't exist");
         res.redirect("/listings");
@@ -42,6 +43,7 @@ router.post("/",
     wrapAysnc(async (req,res,next)=>{
         
         const newlisting = new Listing(req.body.listing);
+        newlisting.owner= req.user._id;
         await newlisting.save();
         req.flash("success","New Listing Created!");
         res.redirect("/listings");
@@ -49,25 +51,31 @@ router.post("/",
     
 );
 //edit route
-router.get("/:id/edit",wrapAysnc(async (req,res)=>{
+router.get("/:id/edit",isLoggedIn,
+    validateListing,wrapAysnc(async (req,res)=>{
     let {id} =req.params;
     const listing = await Listing.findById(id);
     if(!listing){
         req.flash("error","Listing doesn't exist");
-        res.redirect("/listings");
+        return res.redirect("/listings");
     }
     res.render("listings/edit.ejs",{listing});
 }));
 //update route
-router.put("/:id", wrapAysnc(async(req,res)=>{
+router.put("/:id", isLoggedIn,validateListing,wrapAysnc(async(req,res)=>{
     let {id} = req.params;
+    let listing = await Listing.findById(id);
+    if(!listing.owner._id.equals(res.locals.currUser._id)){
+        req.flash("error","You dont't have permission to edit");
+        res.redirect(`/listings/${id}`);
+    }
     await Listing.findByIdAndUpdate(id,{...req.body.listing});
     req.flash("success","Listing Updated!");
     res.redirect(`/listings/${id}`);
     
 }));
 //delete route
-router.delete("/:id", wrapAysnc(async (req,res)=>{
+router.delete("/:id",isLoggedIn, wrapAysnc(async (req,res)=>{
     let {id} = req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);
     console.log(deletedListing);

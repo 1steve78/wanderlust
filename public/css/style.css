@@ -96,6 +96,7 @@ body{
 
 .btns{
     display: flex;
+    margin: 10px;
 }
 
 .show-card{
