@@ -103,3 +103,318 @@ body{
     padding-left: 0;
     padding-right: 0;
 }
+#map {
+  width: 100%;
+  max-width: 700px;       /* centers a bit tighter */
+  height: 400px;
+  margin: 1rem auto;      /* ensures it's horizontally centered */
+  display: block;         /* fixes flex issues */
+  border-radius: 1rem;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional responsive tweak */
+@media (max-width: 576px) {
+  #map {
+    height: 300px;
+    max-width: 95%;
+  }
+}
+
+
+
+/* Slight horizontal breathing room */
+.listings-container {
+  max-width: 96%;          /* fills almost entire screen */
+  margin: 0 auto;          /* centers the container */
+  padding-left: 0.75rem;   /* light padding */
+  padding-right: 0.75rem;
+}
+
+/* On larger screens, add a touch more breathing space */
+@media (min-width: 992px) {
+  .listings-container {
+    max-width: 92%;
+  }
+}
+
+/* On mobile, keep it tight and edge-to-edge */
+@media (max-width: 576px) {
+  .listings-container {
+    max-width: 98%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+/* ========================= */
+/* Listing Card Hover Effect */
+/* ========================= */
+
+.listing-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-radius: 1rem !important;
+  overflow: hidden;
+  background-color: #fff;
+  border: none !important;
+}
+
+/* Lift-up + shadow */
+.listing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+}
+
+/* Smooth image zoom */
+.card-img-top {
+  transition: transform 0.4s ease, filter 0.3s ease;
+}
+
+/* Image zooms on hover */
+.listing-card:hover .card-img-top {
+  transform: scale(1.06);
+  filter: brightness(1.05);
+}
+
+/* Optional: soft overlay effect */
+.card-img-overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.listing-card:hover .card-img-overlay {
+  opacity: 0.2;
+  background-color: #fff;
+}
+
+/* Keep title and text clean */
+.card-title {
+  color: #222222;
+  transition: color 0.2s ease;
+}
+
+.listing-card:hover .card-title {
+  color: #fe424d;
+}
+
+#filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #fff;
+  border-radius: 0.75rem;
+}
+
+/* Individual filter button */
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #222;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+/* Icon size + color */
+.filter i {
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+  color: #fe424d;
+  align-items: center;
+}
+
+/* Hover / active feel */
+.filter:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+  cursor: pointer;
+}
+
+/* Optional active style (for selected filter) */
+.filter.active {
+  opacity: 1;
+  font-weight: 600;
+  border-bottom: 2px solid #fe424d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  #filters {
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .filter {
+    min-width: 70px;
+  }
+}
+
+.tax-info {
+  display: none;
+}
+/* ========================== */
+/* Filters + Tax Toggle Bar   */
+/* ========================== */
+#filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between; /* Filters left, toggle right */
+  gap: 1rem;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #fff;
+  border-radius: 0.75rem;
+}
+
+/* Left side icons */
+.filters-left {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Individual filter button */
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #222;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.filter i {
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+  color: #fe424d;
+}
+
+.filter:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+  cursor: pointer;
+}
+
+.filter.active {
+  opacity: 1;
+  font-weight: 600;
+  border-bottom: 2px solid #fe424d;
+}
+
+/* ========================== */
+/* Tax Toggle Styling         */
+/* ========================== */
+.tax-toggle {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.tax-toggle:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.tax-toggle .form-check-input {
+  width: 2.5rem;
+  height: 1.3rem;
+  background-color: #dcdcdc;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tax-toggle .form-check-input:checked {
+  background-color: #fe424d;
+  box-shadow: 0 0 8px rgba(254, 66, 77, 0.4);
+}
+
+.tax-toggle .form-check-label {
+  margin-left: 0.5rem;
+  color: #222;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+
+/* ========================== */
+/* Navbar Search Styling      */
+/* ========================== */
+.navbar-nav form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Input box */
+.navbar-nav .form-control {
+  width: 220px; /* default width */
+  border-radius: 2rem;
+  border: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  box-shadow: none;
+}
+
+.navbar-nav .form-control:focus {
+  border-color: #fe424d;
+  box-shadow: 0 0 0 0.15rem rgba(254, 66, 77, 0.25);
+}
+
+/* Search button */
+.navbar-nav .btn-search {
+  background-color: #fe424d;
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.45rem 1.1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .btn-search:hover {
+  background-color: #e63a45; /* slightly darker red */
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(254, 66, 77, 0.25);
+}
+
+/* Smooth focus for accessibility */
+.navbar-nav .btn-search:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.15rem rgba(254, 66, 77, 0.35);
+}
+
+/* Optional: enlarge input when focused */
+.navbar-nav .form-control:focus {
+  width: 260px;
+}
+
+/* Responsive behavior */
+@media (max-width: 576px) {
+  .navbar-nav form {
+    width: 100%;
+  }
+  .navbar-nav .form-control {
+    flex: 1;
+    width: 100%;
+  }
+  .navbar-nav .btn-search {
+    flex-shrink: 0;
+  }
+}
