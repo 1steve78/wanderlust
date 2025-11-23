@@ -7,12 +7,30 @@ module.exports.listingSchema = Joi.object({
         location : Joi.string().required(),
         country : Joi.string().required(),
         price : Joi.number().required().min(0),
+
+        category: Joi.string()
+            .valid(
+                "trending",
+                "rooms",
+                "beachfront",
+                "mountains",
+                "city",
+                "pool",
+                "forest",
+                "gym",
+                "pet-friendly",
+                "budget",
+                "favorites"
+            )
+            .required(),
+
         image: Joi.object({
             url: Joi.string().allow("", null),
             filename: Joi.string().allow("", null)
         }).allow(null)
     }).required()
 });
+
 
 module.exports.reviewSchema = Joi.object({
     review : Joi.object({

@@ -197,121 +197,7 @@ body{
   color: #fe424d;
 }
 
-#filters {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1rem 2rem;
-  border-bottom: 1px solid #e5e5e5;
-  background-color: #fff;
-  border-radius: 0.75rem;
-}
 
-/* Individual filter button */
-.filter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #222;
-  opacity: 0.8;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-}
-
-/* Icon size + color */
-.filter i {
-  font-size: 1.3rem;
-  margin-bottom: 0.3rem;
-  color: #fe424d;
-  align-items: center;
-}
-
-/* Hover / active feel */
-.filter:hover {
-  opacity: 1;
-  transform: translateY(-3px);
-  cursor: pointer;
-}
-
-/* Optional active style (for selected filter) */
-.filter.active {
-  opacity: 1;
-  font-weight: 600;
-  border-bottom: 2px solid #fe424d;
-}
-
-/* Responsive adjustments */
-@media (max-width: 576px) {
-  #filters {
-    gap: 1rem;
-    padding: 0.75rem 1rem;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-  .filter {
-    min-width: 70px;
-  }
-}
-
-.tax-info {
-  display: none;
-}
-/* ========================== */
-/* Filters + Tax Toggle Bar   */
-/* ========================== */
-#filters {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between; /* Filters left, toggle right */
-  gap: 1rem;
-  padding: 1rem 2rem;
-  border-bottom: 1px solid #e5e5e5;
-  background-color: #fff;
-  border-radius: 0.75rem;
-}
-
-/* Left side icons */
-.filters-left {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-/* Individual filter button */
-.filter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #222;
-  opacity: 0.8;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-}
-
-.filter i {
-  font-size: 1.3rem;
-  margin-bottom: 0.3rem;
-  color: #fe424d;
-}
-
-.filter:hover {
-  opacity: 1;
-  transform: translateY(-3px);
-  cursor: pointer;
-}
-
-.filter.active {
-  opacity: 1;
-  font-weight: 600;
-  border-bottom: 2px solid #fe424d;
-}
 
 /* ========================== */
 /* Tax Toggle Styling         */
@@ -417,4 +303,106 @@ body{
   .navbar-nav .btn-search {
     flex-shrink: 0;
   }
+}
+/* ========================== */
+/* CLEAN + FIXED FILTER STYLES */
+/* ========================== */
+
+#filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between; /* left filters + toggle right */
+  gap: 1rem;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #fff;
+  border-radius: 0.75rem;
+}
+
+.filters-left {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* ANCHOR TAG as filter button */
+#filters a.filter {
+  text-decoration: none;
+  color: #222;                  /* default text color */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+  transition: all 0.25s ease;
+  font-size: 0.9rem;
+  padding: 8px 4px;
+}
+
+/* Icon styling */
+#filters a.filter i {
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+  color: #fe424d;               /* always red icon */
+}
+
+/* Text under icon */
+#filters a.filter p {
+  margin: 0;
+  font-size: 12px;
+}
+
+/* HOVER */
+#filters a.filter:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+  color: #fe424d;               /* text turns red */
+}
+
+/* ACTIVE category */
+#filters a.filter.active {
+  color: #fe424d;
+  font-weight: 600;
+  border-bottom: 2px solid #fe424d;
+  padding-bottom: 6px;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  #filters {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 0.75rem 1rem;
+  }
+  .filters-left {
+    gap: 1rem;
+  }
+  #filters a.filter {
+    min-width: 70px;
+  }
+}
+
+/* Search page badge styling */
+.search-badge {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: #222;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  text-transform: capitalize;
+}
+
+/* No results box */
+.no-results-box {
+  background: #f8f8f8;
+  border-radius: 1rem;
+  border: 1px solid #eaeaea;
+  padding: 3rem 1rem;
+}
+
+.no-results-box h5 {
+  font-weight: 600;
 }

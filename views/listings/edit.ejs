@@ -49,6 +49,24 @@
                 <div class="invalid-feedback">Location should be valid</div>
             </div>
             
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select name="listing[category]" class="form-control" required>
+                    <option value="trending" <%= listing.category === "trending" ? "selected" : "" %>>Trending</option>
+                    <option value="rooms" <%= listing.category === "rooms" ? "selected" : "" %>>Rooms</option>
+                    <option value="beachfront" <%= listing.category === "beachfront" ? "selected" : "" %>>Beachfront</option>
+                    <option value="mountains" <%= listing.category === "mountains" ? "selected" : "" %>>Mountains</option>
+                    <option value="city" <%= listing.category === "city" ? "selected" : "" %>>City</option>
+                    <option value="pool" <%= listing.category === "pool" ? "selected" : "" %>>Pool</option>
+                    <option value="forest" <%= listing.category === "forest" ? "selected" : "" %>>Forest</option>
+                    <option value="gym" <%= listing.category === "gym" ? "selected" : "" %>>Gym</option>
+                    <option value="pet-friendly" <%= listing.category === "pet-friendly" ? "selected" : "" %>>Pet Friendly</option>
+                    <option value="budget" <%= listing.category === "budget" ? "selected" : "" %>>Budget</option>
+                    <option value="favorites" <%= listing.category === "favorites" ? "selected" : "" %>>Favorites</option>
+                </select>
+            </div>
+
+
             <button class="btn btn-dark edit-btn mt-3">Edit</button>
 
 
