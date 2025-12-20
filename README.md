@@ -1,18 +1,43 @@
-# Airbnb Clone
+# 🌍 WanderLust
 
-### Techs Used:
-1. Express.js (+ejs)
-2. MongoDB (mongoose)
-3. Passport
+WanderLust is a full-stack travel stay listing platform that allows users to explore, create, and manage property listings.  
+This project focuses on real-world backend development concepts such as authentication, authorization, image handling, and deployment.
 
-### How to run the app:
-On your terminal, run the following commands:
-1. `git clone https://github.com/1steve78/wanderlust.git`
-2. `cd wanderlust`
-3. `npm install`
-4. `npm run dev`
-5. On your browser, open http://localhost:8080
+---
 
-## App Workflow
+## 🚀 Features
 
-Coming soon...
+- User authentication and authorization using Passport.js  
+- Create, edit, and delete property listings  
+- Upload and manage images using Cloudinary  
+- Secure session-based authentication  
+- Server-side rendering with EJS templates  
+- RESTful routing and MVC architecture  
+
+---
+
+## 🛠️ Tech Stack
+
+**Backend**
+- Node.js
+- Express.js
+- MongoDB (Mongoose)
+
+**Frontend**
+- EJS Templates
+- CSS / Bootstrap
+
+**Authentication**
+- Passport.js
+- Express-Session
+
+**Media Storage**
+- Cloudinary
+
+**Deployment**
+- Render
+
+---
+
+## 📂 Project Structure
+
